@@ -3,6 +3,10 @@
 # Copyleft (c) by m 2026
 #---------------------------
 name: My-GitHubActions-Basics
+env:
+  APPLICATION_NAME       : "MyFlask"
+  DEPLOY_PACKAGE_NAME    : "flask-deply-over-${{ github.sha }}"
+
 
 on:
   push:
@@ -18,6 +22,12 @@ jobs:
     - name: Print Hello Message in Testing
       run: echo "Hello World from Testing"
 
+    - name: Execute few commands
+      run : |
+        echo "Hello Message1"
+        echo "Hello Message2"
+        echo "Application name: ${{env.APPLICATION_NAME }}"
+
 
   my_deploy:
     runs-on: ubuntu-latest
@@ -26,3 +36,20 @@ jobs:
     steps:
     - name: Print Hello Message in Deploy
       run: echo "Hello World from Deploy job"
+
+    - name: Printing Deployment package
+      run : echo "Deploy pakcage name is ${{ env.DEPLOY_PACKAGE_NAME }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
